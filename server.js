@@ -14,7 +14,6 @@ function start(route, handle){
     // Adds a listener for new postdata coming in.
     request.addListener("data", function(postDataChunk){
       postData += postDataChunk;
-      console.log("Received POST data chunk '" + postDataChunk + "'.");
     });
 
     // Adds a listener to handle routing of the postdata only when done.
