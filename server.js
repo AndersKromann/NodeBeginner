@@ -9,17 +9,7 @@ function start(route, handle){
     var pathname = url.parse(request.url).pathname;
     console.log("Request for " + pathname + " received.");
 
-    request.setEncoding("utf8");
-
-    // Adds a listener for new postdata coming in.
-    request.addListener("data", function(postDataChunk){
-      postData += postDataChunk;
-    });
-
-    // Adds a listener to handle routing of the postdata only when done.
-    request.addListener("end", function(){
-      route(handle, pathname, response, postData);
-    });
+    route(handle, pathname, response, request);
   }
 
   // Starts the server
