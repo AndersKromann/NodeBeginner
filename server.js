@@ -1,14 +1,14 @@
 var http = require("http");
 var url = require("url");
 
-function start(route){
+function start(route, handle){
   // Handles requests to the server
   function onRequest(request, response){
     // Get the pathname from the url
     var pathname = url.parse(request.url).pathname;
 
     console.log("Request for " + pathname + " received.");
-    route(pathname);
+    route(handle, pathname);
 
     // Create the response.
     response.writeHead(200, {"Content-Type": "text/plain"});
